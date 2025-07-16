@@ -99,14 +99,14 @@ export default function Home() {
           </div>
           <div className={styles.usersFilterInfo}>
             <div className={styles.filterGroup}>
-              <p>
+              {/* <p>
                 Liczba użytkowników: <span>{usersData.length}</span>
-              </p>
+              </p> */}
               <p>
                 Liczba wszystkich użytkowników: <span>{usersDataMain.length}</span>
               </p>
               <p>
-                Liczba użytkowników z niewprowadzonymi pełnymi danymi: <span>{usersData.filter(user => !user.imie || !user.nazwisko || !user.email).length}</span>
+                Liczba użytkowników bez wprowadzonych danych: <span>{usersData.filter(user => !user.imie || !user.nazwisko || !user.email).length}</span>
               </p>
             </div>
           </div>
