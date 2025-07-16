@@ -1,0 +1,338 @@
+.container {
+  display: flex;
+  width: 100%;
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50px;
+    background-color: #34495e;
+    color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    .inner{
+      padding: 0 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      button{
+        display: none;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        z-index: 1001;
+        &:hover{
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+  .headerNav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+  .sidebar {
+    width: 200px;
+    background-color: #2c3e50;
+    color: white;
+    padding-top: 70px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    min-height: 100vh;
+  }
+  .sidebarOpen{
+    animation: slideIn 0.5s ease-in-out;
+    width: 100vw;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    height: auto;
+    z-index: 100;
+    background-color: #2c3e50;
+  }
+  .sidebarItem {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+  .sidebarItem i {
+    margin-right: 10px;
+    font-size: 1.2em;
+  }
+
+  .mainContent {
+    flex-grow: 1;
+    padding: 70px 0;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #f0f2f5;
+    overflow-y: auto;
+    gap: 2em;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      width: 90%;
+      margin: 0 auto;
+      color: #34495e;
+      font-size: 1.8em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+    .filterContainer {
+      display: grid;
+      grid: auto-flow / 1fr 1fr;
+      // justify-items: center;
+      gap: 2em;
+      width: 90%;
+      margin: 0 auto;
+      .areaFilters {
+        background-color: #ffffff;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        height: 100%;
+        gap: 20px;
+        align-items: flex-end;
+      }
+      .usersFilterInfo{
+        background-color: #ffffff;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        height: 100%;
+        gap: 20px;
+        align-items: flex-end;
+
+      }
+      .filterGroup {
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        label {
+          font-weight: bold;
+          margin-bottom: 8px;
+          color: #555;
+          font-size: 0.9em;
+        }
+        span{
+          font-weight: bold;
+        }
+      }
+    }
+    .dataTableContainer {
+      width: 90%;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+    .dataTable {
+      width: 100%;
+      border-collapse: collapse;
+      thead th,
+      tbody td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+      thead th {
+        background-color: #ecf0f1;
+        font-weight: bold;
+        color: #444;
+        text-transform: uppercase;
+        font-size: 0.9em;
+      }
+      tbody tr:hover {
+        background-color: #f5f5f5;
+      }
+      tbody tr.selected {
+        background-color: #b3e0ff;
+        color: #333;
+      }
+      tbody {
+        .login,
+        .email {
+          line-break: anywhere;
+        }
+      }
+      thead, tbody{
+        .info{  
+          display: none;
+          text-align: center;
+          justify-items: center;
+
+          button{
+            background: unset;
+            border: unset;
+            i{
+              font-size: 1.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footerLogo {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    color: #7f7f7f;
+    font-size: 5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    .sidebar {
+      width: 180px;
+    }
+    .mainContent {
+      padding: 70px 25px 20px 25px;
+      .dataTableContainer {
+        tbody,
+        thead {
+          .name,
+          .surrname {
+            display: none;
+          }
+          .info{
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    .sidebar {
+      width: 150px;
+    }
+    .mainContent {
+      padding: 70px 20px 20px 20px;
+      .dataTableContainer {
+        tbody,
+        thead {
+          .name,
+          .surrname,
+          .description {
+            display: none;
+          }
+          .info{
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    .sidebar {
+      width: 0vw;
+    }
+    .sideBarOpen{
+      width: 100vw;
+    }
+    .header{
+      .inner{
+        button{
+          display: block;
+        }
+      }
+    }
+    .mainContent {
+      padding: 70px 15px 20px 15px;
+      .filterContainer {
+        display: flex;
+        flex-direction: column;
+        .areaFilters, .usersFilterInfo{
+          margin: 0;
+        }
+      }
+      .dataTableContainer {
+        tbody,
+        thead {
+          .email,
+          .fullName,
+          .description {
+            display: none;
+          }
+          .info{
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    .sidebar {
+      width: 0vw;
+    }
+    .mainContent {
+      padding: 70px 15px 20px 15px;
+      .dataTableContainer {
+        tbody,
+        thead {
+          .name,
+          .surrname,
+          .description,
+          .lp {
+            display: none;
+          }
+          .fullName {
+            display: table-cell;
+          }
+          .info{
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
